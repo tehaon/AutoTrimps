@@ -661,7 +661,7 @@ function shouldRunUniqueMap(vmStatus, map) {
     const isC2 = game.global.runningChallengeSquared;
 
     const mapData = uniqueMaps[map.name];
-    if (mapData === undefined || game.global.world < mapData.zone || getMapRatio(vmStatus, map) > 1 || !humaneMapIsSafe(map.level, map.size, map.diff)) {
+    if (mapData === undefined || game.global.world < mapData.zone || getMapRatio(vmStatus, map) > 1 || !humaneMapIsSafe(map.level, map.size, map.difficulty)) {
         return false;
     }
     if (!isC2 && mapData.challenges.includes(challenge)) {
@@ -1308,8 +1308,8 @@ function autoMap(hdStats, vmStatus) {
     if (selectedMap === 'world' && bionicPool.length > 0) {
         bionicPool.sort(function (bionicA, bionicB) {return bionicA.level - bionicB.level});
         let bionicMaxLevel = 0;
-        while (getMapRatio(vmStatus, undefined, 125 + 15 * bionicMaxLevel, bionicPool[0].diff) <= 1) {
-            if (humaneMapIsSafe(125 + 15 * bionicMaxLevel, bionicPool[0].size, bionicPool[0].diff))
+        while (getMapRatio(vmStatus, undefined, 125 + 15 * bionicMaxLevel, bionicPool[0].difficulty) <= 1) {
+            if (humaneMapIsSafe(125 + 15 * bionicMaxLevel, bionicPool[0].size, bionicPool[0].difficulty))
                 bionicMaxLevel += 1;
         }
         const tryBionicSniper = !game.achievements.oneOffs.finished[42] && (110 + 15 * bionicMaxLevel) >= z + 45;

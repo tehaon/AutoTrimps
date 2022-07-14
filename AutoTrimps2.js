@@ -78,6 +78,8 @@ function delayStartAgain(){
     const defaultLoop = gameLoop
     gameLoop = function() {
         defaultLoop();
+        mainLoop();
+        console.log('loop', new Date());
     }
     
     

@@ -73,7 +73,15 @@ function delayStartAgain(){
     game.global.addonUser = true;
     game.global.autotrimps = true;
     MODULESdefault = JSON.parse(JSON.stringify(MODULES));
-    setInterval(mainLoop, runInterval);
+
+    //backup original gameLoop
+    const defaultLoop = gameLoop
+    gameLoop = function() {
+        defaultLoop();
+    }
+    
+    
+    //setInterval(mainLoop, runInterval);
     setInterval(guiLoop, runInterval*10);
 }
 

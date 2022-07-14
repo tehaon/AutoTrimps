@@ -79,9 +79,7 @@ function delayStartAgain(){
     gameLoop = function() {
         defaultLoop();
         mainLoop();
-        console.log('loop', new Date());
     }
-    
     
     //setInterval(mainLoop, runInterval);
     setInterval(guiLoop, runInterval*10);
